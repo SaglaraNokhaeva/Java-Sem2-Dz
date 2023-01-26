@@ -25,13 +25,25 @@ public class Ex2 {
         try (BufferedReader br = new BufferedReader(new FileReader(f1))) {
             String line;
             while ((line = br.readLine()) != null) {
-
-
                 
+                String[] words = line.split("\"фамилия\":\"|\",\"оценка\":\"|\",\"предмет\":\"|\"");
+                
+                StringBuilder builder = new StringBuilder();
+                builder.append("Студент ");
+                builder.append(words[1]);
+                builder.append(" получил ");
+                builder.append(words[2]);
+                builder.append(" по предмету ");
+                builder.append(words[3]);
+                builder.append(".");
+                String text = builder.toString();
+                System.out.println(text);
 
-                FileWriter writer=new FileWriter("f2.txt");
-
-                System.out.println(line);
+                FileWriter writer = new FileWriter("f2.txt");
+                writer.write(text);
+                writer.append('\n'); 
+                writer.flush();
+               
             }
         } catch (IOException e) {
             e.printStackTrace();
