@@ -9,7 +9,13 @@ public class Ex3 {
         System.out.print("Введите строку: ");
         String str = scString.nextLine();
         scString.close();
-        
+        boolean result = false;
+        for (int i = 0; i < (str.length() - 1) / 2; i++) {
+            if (str.charAt(i) == str.charAt(str.length() - 1)) {
+                result = true;
+            }
+        }
+        System.out.println(result);
     }
 
 }
