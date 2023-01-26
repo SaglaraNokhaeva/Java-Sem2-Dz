@@ -4,7 +4,6 @@
 import java.io.FileWriter;
 import java.util.Scanner;
 
-
 public class Ex1 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -21,7 +20,7 @@ public class Ex1 {
         }
         System.out.println();
         // сортировка
-        
+
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] >= arr[j + 1]) {
@@ -30,18 +29,27 @@ public class Ex1 {
                     arr[j + 1] = p;
                 }
             }
-            //массив переводим в строку
+            // массив переводим в строку
             StringBuilder builder = new StringBuilder();
             for (int k : arr) {
                 builder.append(k);
             }
             String text = builder.toString();
-            //логирование
-            FileWriter writer=new FileWriter("file.txt");
-            writer.write(text);  
-            writer.close();          
+            // логирование
+            try (FileWriter writer = new FileWriter("notes3.txt", true)) {
+                writer.append((i+1)+"-я итерация: ");
+                writer.write(text);
+                // запись по символам
+                
+                writer.append('\n');                
+
+                writer.flush();
+            } catch (Exception e) {
+
+                System.out.println("что-то не так");
+            }
         }
-        
+
         System.out.print("Отсортированный массив: ");
         for (int i = 0; i < razmernost; i++) {
             System.out.print(" " + arr[i]);
