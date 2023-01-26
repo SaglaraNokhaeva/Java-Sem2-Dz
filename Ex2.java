@@ -13,7 +13,29 @@
 // Студент Петрова получил 4 по предмету Информатика.
 // Студент Краснов получил 5 по предмету Физика.
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Ex2 {
-    
+    public static void main(String[] args) {
+        File f1 = new File("student.txt");
+        try (BufferedReader br = new BufferedReader(new FileReader(f1))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+
+
+                
+
+                FileWriter writer=new FileWriter("f2.txt");
+
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
