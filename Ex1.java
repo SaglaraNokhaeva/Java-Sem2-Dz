@@ -20,16 +20,15 @@ public class Ex1 {
         }
         System.out.println();
         // сортировка
-
+        int count=0;
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] >= arr[j + 1]) {
                     int p = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = p;
-                }
-            }
-            // массив переводим в строку
+                    count++;
+                    // массив переводим в строку
             StringBuilder builder = new StringBuilder();
             for (int k : arr) {
                 builder.append(k);
@@ -37,10 +36,8 @@ public class Ex1 {
             String text = builder.toString();
             // логирование
             try (FileWriter writer = new FileWriter("notes3.txt", true)) {
-                writer.append((i+1)+"-я итерация: ");
+                writer.append(count+"-я итерация: ");
                 writer.write(text);
-                // запись по символам
-                
                 writer.append('\n');                
 
                 writer.flush();
@@ -48,6 +45,9 @@ public class Ex1 {
 
                 System.out.println("что-то не так");
             }
+
+                }
+            }            
         }
 
         System.out.print("Отсортированный массив: ");
