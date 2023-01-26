@@ -25,9 +25,9 @@ public class Ex2 {
         try (BufferedReader br = new BufferedReader(new FileReader(f1))) {
             String line;
             while ((line = br.readLine()) != null) {
-                
+                //сплитуем
                 String[] words = line.split("\"фамилия\":\"|\",\"оценка\":\"|\",\"предмет\":\"|\"");
-                
+                //формируем новую строку по образцу    
                 StringBuilder builder = new StringBuilder();
                 builder.append("Студент ");
                 builder.append(words[1]);
@@ -38,12 +38,13 @@ public class Ex2 {
                 builder.append(".");
                 String text = builder.toString();
                 System.out.println(text);
-
-                FileWriter writer = new FileWriter("f2.txt");
+                //запись в файл
+                FileWriter writer = new FileWriter("f2.txt", true);
                 writer.write(text);
-                writer.append('\n'); 
+                writer.append('\n');
                 writer.flush();
-               
+                writer.close();
+
             }
         } catch (IOException e) {
             e.printStackTrace();
